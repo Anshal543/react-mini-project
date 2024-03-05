@@ -9,7 +9,7 @@ const Main = () => {
   
     {
       cardsData.map((card)=>(
-  <Card img={card.img} profile={card.profile} title={card.title} channel={card.channel} views={card.views} time={card.time}/>
+  <Card key={card.id} img={card.img} profile={card.profile} title={card.title} channel={card.channel} views={card.views} time={card.time} verified = {card.verified}/>
       ))
     }
       
