@@ -12,6 +12,15 @@ function TypingMaster({ data }) {
   const [startsTime, setstartsTime] = useState(false);
   const [endsTime, setendsTime] = useState(false);
 
+  function restartGame() {
+    settext(data.split(" "));
+    setinput("");
+    setCurrentTextIndex(0);
+    setcorrectWordsArray([]);
+    setstartsTime(false);
+    setendsTime(false);
+  }
+
   function handleInput(e) {
     if (!startsTime) {
       setstartsTime(true);
@@ -40,6 +49,7 @@ function TypingMaster({ data }) {
         startsTime={startsTime}
         endsTime={setendsTime}
         correctWordsArray={correctWordsArray}
+        restartGame={restartGame}
       />
       {text.map((word, index) => {
         return (

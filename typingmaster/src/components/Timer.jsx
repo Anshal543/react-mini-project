@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 
-function Timer({ startsTime, endsTime, correctWordsArray }) {
+function Timer({ startsTime, endsTime, correctWordsArray, restartGame }) {
   const [currentTime, setcurrentTime] = useState(10);
   const interval = useRef(null);
   useEffect(() => {
@@ -26,10 +26,22 @@ function Timer({ startsTime, endsTime, correctWordsArray }) {
     return wpm;
   }
 
+  const handleRestart = () => {
+    setcurrentTime(20);
+    restartGame();
+  };
   return (
     <div className="text-4xl font-bold mb-4 ml-[40%]">
       {currentTime == 0 ? (
-        <div>WPM:{calculateWPM()}</div>
+        <div>
+          WPM:{calculateWPM()}
+          <button
+            className="bg-blue-700 p-2 rounded-md ml-4"
+            onClick={handleRestart}
+          >
+            Restart
+          </button>
+        </div>
       ) : (
         <div> Timer:{currentTime}</div>
       )}
