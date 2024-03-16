@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 
-function Timer({ startsTime, endsTime, correctWordsArray, restartGame }) {
-  const [currentTime, setcurrentTime] = useState(10);
+function Timer({ startsTime, endsTime, correctWordsArray, restartGame ,timeLimit}) {
+  const [currentTime, setcurrentTime] = useState(20);
   const interval = useRef(null);
   useEffect(() => {
     if (startsTime) {
@@ -27,7 +27,7 @@ function Timer({ startsTime, endsTime, correctWordsArray, restartGame }) {
   }
 
   const handleRestart = () => {
-    setcurrentTime(20);
+    setcurrentTime(timeLimit);
     restartGame();
   };
   return (
@@ -43,7 +43,7 @@ function Timer({ startsTime, endsTime, correctWordsArray, restartGame }) {
           </button>
         </div>
       ) : (
-        <div> Timer:{currentTime}</div>
+        <div className="ml-10"> Timer:{currentTime}</div>
       )}
     </div>
   );

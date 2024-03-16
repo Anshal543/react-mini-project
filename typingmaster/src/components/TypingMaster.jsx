@@ -11,6 +11,7 @@ function TypingMaster({ data }) {
   const [correctWordsArray, setcorrectWordsArray] = useState([]);
   const [startsTime, setstartsTime] = useState(false);
   const [endsTime, setendsTime] = useState(false);
+  const [timeLimit, settimeLimit] = useState();
 
   function restartGame() {
     settext(data.split(" "));
@@ -45,11 +46,22 @@ function TypingMaster({ data }) {
 
   return (
     <div className="p-4 text-white">
+       <div className="text-center">
+        <input
+        className="text-black text-center p-4 rounded-md mb-4 mr-2"
+          type="number"
+          value={timeLimit}
+          onChange={(e) => settimeLimit(e.target.value)}
+          name=""
+          id=""
+        />
+      </div>
       <Timer
         startsTime={startsTime}
         endsTime={setendsTime}
         correctWordsArray={correctWordsArray}
         restartGame={restartGame}
+        timeLimit={timeLimit}
       />
       {text.map((word, index) => {
         return (
@@ -71,6 +83,7 @@ function TypingMaster({ data }) {
         className="max-w-lg mt-20 px-16 py-4 text-black m-auto block"
         disabled={endsTime}
       />
+     
     </div>
   );
 }
